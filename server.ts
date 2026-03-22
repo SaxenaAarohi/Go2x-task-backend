@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import cors from "cors";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -9,6 +10,9 @@ async function startServer() {
   const app = express();
   const PORT = process.env.PORT || 3000;
 
+  app.use(cors({
+  origin: "https://frontend-go2x.vercel.app"
+}));
   app.use(express.json());
 
   // In-memory "database"
